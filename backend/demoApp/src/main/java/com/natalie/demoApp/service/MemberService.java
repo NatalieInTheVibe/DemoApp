@@ -1,15 +1,22 @@
 package com.natalie.demoApp.service;
 
+import com.natalie.demoApp.entity.Event;
 import com.natalie.demoApp.entity.Member;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 public interface MemberService {
-    Integer saveMember(Member member);
+    Long saveMember(Member member);
 
     List<Member> getAllMembers();
 
-    Member getMemberById(Integer mbrNo);
+    Member getMemberById(Long mbrNo);
 
-    void deleteMember(Integer mbrNo);
+    void deleteMember(Long mbrNo);
+
+    Member joinEvent(Long mbrNo, Long evtNo);
+
+    Set<Event> getMemberEvents(Long mbrNo);
 }

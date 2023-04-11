@@ -20,6 +20,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "author": "Nataile Huang, nongtianh6@gmail.com",
   "eslintConfig": {
     "extends": [
       "react-app",

@@ -7,12 +7,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 @ControllerAdvice
-public class MemberNotFoundHandler {
+public class ExceptionHandler {
 
     @ResponseBody
-    @ExceptionHandler(MemberNotFoundException.class)
+    @org.springframework.web.bind.annotation.ExceptionHandler(RuntimeException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    public Map<String, String> exceptionHandler(MemberNotFoundException exception){
+    public Map<String, String> exceptionHandler(RuntimeException exception){
         Map<String,String> errorMsgMap = new HashMap<>();
         errorMsgMap.put("Error Message: ", exception.getMessage());
         return errorMsgMap;
