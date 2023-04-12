@@ -23,6 +23,9 @@ export default function NavBar() {
                   <Link className="btn btn-outline-light mx-2" to="/memberList/saveMember">
                     Add Member
                   </Link>
+                  <Link className="btn btn-outline-light" to="/eventList/saveEvent">
+                    Add Event
+                  </Link>
                 </div>
             </div>
         </nav>
