@@ -22,7 +22,7 @@ public class MemberController {
     @PostMapping("/saveMember")
     public ResponseEntity<String> saveMember(@RequestBody Member member){
         //in postman when we are entering the member details
-        //and we try to save the student details into the database
+        //and we try to save the member details into the database
         //we are entering the data in postman as json object
         //requestbody will deserialize the json to java object
         //and save member details in database
@@ -35,7 +35,7 @@ public class MemberController {
     public ResponseEntity<Object> joinEvent(@PathVariable("mbrNo") Long mbrNo, @PathVariable("evtNo") Long evtNo){
         Member member = memberService.joinEvent(mbrNo, evtNo);
         if (member != null){
-            return new ResponseEntity<>(member, HttpStatus.OK);
+            return new ResponseEntity<>("Joined successfully", HttpStatus.OK);
         }
         return new ResponseEntity<>("Failed to join event.", HttpStatus.NOT_FOUND);
     }
@@ -70,12 +70,12 @@ public class MemberController {
         memberById.setMbrSex(member.getMbrSex());
         memberById.setMbrTier(member.getMbrTier());
         Long id = memberService.saveMember(memberById);
-        return new ResponseEntity<String>("Student with '"+id+"' has been updated", HttpStatus.OK);
+        return new ResponseEntity<String>("Member with '"+id+"' has been updated", HttpStatus.OK);
     }
 
     @DeleteMapping("/deleteMember/{mbrNo}")
     public ResponseEntity<String> deleteMember(@PathVariable("mbrNo") Long mbrNo){
         memberService.deleteMember(mbrNo);
-        return new ResponseEntity<>("Student with '"+mbrNo+"' has been deleted.", HttpStatus.OK);
+        return new ResponseEntity<>("Member with '"+mbrNo+"' has been deleted.", HttpStatus.OK);
     }
 }
