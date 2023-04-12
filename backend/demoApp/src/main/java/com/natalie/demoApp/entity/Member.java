@@ -1,7 +1,9 @@
 package com.natalie.demoApp.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,6 +14,9 @@ import java.util.Set;
 //setter getter NoArgsConstructor AllArgsConstructor
 @Entity//telling JPA to map the class to a database table, and to create a corresponding schema for the table.
 //table name will be member, same as the name of the entity class annotated with @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "mbrNo")
 public class Member {
 
     @Id//state that the mbrNo is the primary key

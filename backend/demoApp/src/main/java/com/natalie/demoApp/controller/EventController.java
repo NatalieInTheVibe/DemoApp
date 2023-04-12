@@ -9,11 +9,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 
 @RestController
-@CrossOrigin("http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000",allowedHeaders = "*")
 @RequestMapping("/eventDetails")
 public class EventController {
 
@@ -31,7 +30,7 @@ public class EventController {
         return new ResponseEntity<List<Event>>(list,HttpStatus.OK);
     }
 
-    @GetMapping("/eventList/{evtNo}")
+    @GetMapping("/getEventById/{evtNo}")
     public ResponseEntity<Event> getEventById(@PathVariable("evtNo") Long evtNo){
         Event evt = eventService.getEventById(evtNo);
         return new ResponseEntity<Event>(evt,HttpStatus.OK);

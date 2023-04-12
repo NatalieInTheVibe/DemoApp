@@ -41,7 +41,7 @@ public class MemberServiceImplements implements MemberService{
 
     @Override
     public void deleteMember(Long mbrNo) {
-        if (!eventRepository.existsById(mbrNo)) {
+        if (!memberRepository.existsById(mbrNo)) {
             throw new RuntimeException(mbrNo);
         }
         memberRepository.deleteById(mbrNo);

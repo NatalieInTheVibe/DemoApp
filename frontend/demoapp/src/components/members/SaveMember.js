@@ -19,7 +19,7 @@ export default function SaveMember() {
     e.preventDefault();
     await axios.post("http://localhost:8080/memberDetails/saveMember", member);
     console.log(member);
-    navigate("/");
+    navigate("/memberList");
   }
 
   const cancel = () => {
