@@ -30,10 +30,14 @@ spring.datasource.password='<YOUR PASSWORD HERE>'
 ```
 
 If you want to clean the DB, go to `\DemoApp\backend\demoApp\src\main\resources\application.properties`, uncomment:
+```
 spring.jpa.hibernate.ddl-auto=create
+```
 and keep the other two commented:
+```
 #spring.jpa.hibernate.ddl-auto=validate
 #spring.jpa.hibernate.ddl-auto=update
+```
 
 ### 3. Starting the application
 
