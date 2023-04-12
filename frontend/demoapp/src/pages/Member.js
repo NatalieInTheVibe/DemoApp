@@ -35,7 +35,7 @@ export default function Home() {
             <tbody>
                 {members.map((member, index) => (
                      <tr>
-                     <th scope="row" key = {index}>{index+1}</th>
+                     <th scope="row" key = {index}>{member.mbrNo}</th>
                      <td>{member.mbrName}</td>
                      <td>{member.mbrTier}</td>
                      <td>{member.mbrSex}</td>

@@ -4,6 +4,7 @@ import axios from 'axios'
 
 export default function ViewEvent() {
     const [event, setEvent] = useState({});
+    const [enrolledMember, setEnrolledMember] = useState([]); 
     const {evtNo} = useParams();
 
     useEffect(() => {
@@ -12,6 +13,11 @@ export default function ViewEvent() {
             setEvent(result.data);
         };
         loadEvent();
+        const loadEnrolledMember = async () => {
+            const result = await axios.get(`http://localhost:8080/eventDetails/eventList/${evtNo}/members`);
+            setEnrolledMember(result.data);
+        }
+        loadEnrolledMember();
     }, [evtNo]);
 
     
@@ -45,8 +51,8 @@ export default function ViewEvent() {
             <div className='card-header'>Details of Member enrolled: </div>
             <div className='card-body'>
                 
-                    {event.members && event.members !== null && 
-                    event.members.map((member) => {
+                    {enrolledMember && enrolledMember !== null && 
+                    enrolledMember.map((member) => {
                         return (
                             <>
                             <ul className='list-group list-group-flush'>

@@ -24,7 +24,7 @@ public class Member {
     private String mbrTier;
     private String mbrSex;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
         //The @JoinTable annotation specifies the details of the junction table ("member_event") and how it should be created and managed.
         name= "member_event",

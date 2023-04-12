@@ -47,7 +47,7 @@ export default function ViewMember() {
         };
         loadAvailableEvent();
         // console.log(member.events);
-    }, [member]);
+    });
 
     
 
