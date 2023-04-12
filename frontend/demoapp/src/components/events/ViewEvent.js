@@ -3,9 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 
 export default function ViewEvent() {
-    const [event, setEvent] = useState({
-  
-    });
+    const [event, setEvent] = useState({});
     const {evtNo} = useParams();
 
     useEffect(() => {
@@ -20,7 +18,8 @@ export default function ViewEvent() {
 
   return (
     <div className='container'>
-        <div className='col-md-6 offset-md-3 border rounded p-4 mt-2 shadow'>
+        <div className='row'>
+        <div className='col-md-4 offset-md-1 border rounded p-4 mt-2 shadow'>
         <h2 className='text-center m-4'>View Event Details</h2>
         <div className='card'>
             <div className='card-header'>Details of Event Number: 
@@ -39,6 +38,33 @@ export default function ViewEvent() {
             </div>
         </div>
         <Link className='btn btn-outline-primary mt-2' to={`/eventList`} >Back</Link>
+        </div>
+        <div className='col-md-4 offset-md-1 border rounded p-4 mt-2 shadow'>
+        <h2 className='text-center m-4'>View Enrollment Details</h2>
+        <div className='card'>
+            <div className='card-header'>Details of Member enrolled: </div>
+            <div className='card-body'>
+                
+                    {event.members && event.members !== null && 
+                    event.members.map((member) => {
+                        return (
+                            <>
+                            <ul className='list-group list-group-flush'>
+                            <li className='list-group-item' key={member.mbrNo}>
+                                <b>Member Number: </b>
+                                {member.mbrNo}
+                            </li>
+                            <li className='list-group-item' key={member.mbrName}>
+                                <b>Member Name: </b>
+                                {member.mbrName}
+                            </li>
+                            </ul>
+                            </>
+                        )
+                    })}                
+            </div>
+        </div>
+        </div>
         </div>
     </div>
 

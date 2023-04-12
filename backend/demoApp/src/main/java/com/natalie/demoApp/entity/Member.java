@@ -1,9 +1,6 @@
 package com.natalie.demoApp.entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -35,5 +32,6 @@ public class Member {
         inverseJoinColumns = @JoinColumn(name = "evtNo",referencedColumnName = "evtNo")
     )
     @EqualsAndHashCode.Exclude
+    @JsonIgnore
     private Set<Event> events;
 }
