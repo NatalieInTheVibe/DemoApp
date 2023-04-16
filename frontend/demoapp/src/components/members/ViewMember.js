@@ -46,8 +46,7 @@ export default function ViewMember() {
             setAvailableEvent(result.data);
         };
         loadAvailableEvent();
-        // console.log(member.events);
-    });
+    },[]);
 
     
 

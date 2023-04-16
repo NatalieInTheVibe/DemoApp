@@ -4,6 +4,7 @@ import com.natalie.demoApp.entity.Event;
 import com.natalie.demoApp.entity.Member;
 import com.natalie.demoApp.exception.RuntimeException;
 import com.natalie.demoApp.repos.EventRepository;
+import com.natalie.demoApp.repos.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,6 +16,8 @@ import java.util.Set;
 public class EventServiceImplements implements EventService{
     @Autowired
     private EventRepository eventRepository;
+    @Autowired
+    private MemberRepository memberRepository;
 
     @Override
     public Long saveEvent(Event event){
@@ -45,10 +48,20 @@ public class EventServiceImplements implements EventService{
 
     @Override
     public void deleteEvent(Long evtNo) {
-        if (!eventRepository.existsById(evtNo)) {
+        Optional<Event> eventOpt = eventRepository.findById(evtNo);
+        if (!eventOpt.isPresent()) {
             throw new RuntimeException(evtNo);
         }
-        eventRepository.deleteById(evtNo);
+        else{
+            Event event = eventOpt.get();
+            for (Member member : event.getMembers()) {
+                member.getEvents().remove(event);
+
+            }
+            memberRepository.saveAll(event.getMembers());
+            eventRepository.deleteById(evtNo);
+        }
+
     }
 
 
